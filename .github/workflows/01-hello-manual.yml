@@ -1,0 +1,24 @@
+name: 01 - Hello World (manual)
+
+# Disparo manual pelo botão "Run workflow" na aba Actions
+on:
+  workflow_dispatch:
+    inputs:
+      nome:
+        description: "Quem você quer cumprimentar?"
+        required: true
+        default: "Web Academy"
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Diz olá
+        run: echo "Hello World, ${{ inputs.nome }}!"
+
+      - name: Mostra informações da execução
+        run: |
+          echo "Evento disparador: ${{ github.event_name }}"
+          echo "Disparado por:     ${{ github.actor }}"
+          echo "Repositório:       ${{ github.repository }}"
+          echo "Data/hora no runner: $(date)"
