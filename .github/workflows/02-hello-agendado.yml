@@ -1,11 +1,12 @@
 name: 02 - Hello World (agendado)
 
-# Disparo programado via cron (UTC): a cada 5 minutos, começando no
-# minuto 2 (2, 7, 12, ...). Evitar os minutos "redondos" diminui o
-# atraso, pois é quando a fila de agendamentos do GitHub fica mais cheia.
+# Disparo programado via cron (o horário do cron é sempre em UTC):
+#  - a cada 5 minutos, começando no minuto 2 (2, 7, 12, ...);
+#  - todo dia às 00:45 UTC (20:45 no horário de Manaus).
 on:
   schedule:
     - cron: "2-59/5 * * * *"
+    - cron: "45 0 * * *"
 
 jobs:
   hello:
